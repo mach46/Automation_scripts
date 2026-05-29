@@ -1,0 +1,82 @@
+
+COMMAND FILE:
+  CFX Post Version = 23.2
+END
+
+!open(FILE, '> /scratch/24cr60r06/dhairya/data_files/extracted_data/statepoint_data/rotation_d2_5k_state_point_data.csv');
+    
+# ==============================
+# HEADER
+# ==============================
+!print FILE "Pin,Tin,rhoin,muin,hin,sin,vin,Min,VThetain,P0in,T0in,htin,Pout,Tout,rhoout,muout,hout,sout,vout,Mout,VThetaout,P0out,T0out,htout,mdot,Fx,Fy,Fz,Tx,Ty,Tz,tau_w\n";
+
+# ==============================
+# INLET (massFlowAve preferred)
+# ==============================
+! $Pin   = massFlowAve("Pressure","inlet");
+! $Tin   = massFlowAve("Temperature","inlet");
+! $rhoin = massFlowAve("Density","inlet");
+! $muin = massFlowAve("Dynamic Viscosity","inlet");
+
+
+! $hin   = massFlowAve("Static Enthalpy","inlet");
+! $sin   = massFlowAve("Static Entropy","inlet");
+
+! $vin   = massFlowAve("Velocity","inlet");
+! $Min   = massFlowAve("Mach Number","inlet");
+! $VThetain  = areaAve("Velocity Circumferential","inlet");
+
+! $P0in  = massFlowAve("Total Pressure","inlet");
+! $T0in  = massFlowAve("Total Temperature","inlet");
+! $htin  = massFlowAve("Total Enthalpy","inlet");
+
+# ==============================
+# OUTLET
+# ==============================
+! $Pout   = massFlowAve("Pressure","outlet");
+! $Tout   = massFlowAve("Temperature","outlet");
+! $rhoout = massFlowAve("Density","outlet");
+! $muout = massFlowAve("Dynamic Viscosity","outlet");
+
+
+! $hout   = massFlowAve("Static Enthalpy","outlet");
+! $sout   = massFlowAve("Static Entropy","outlet");
+
+! $vout   = massFlowAve("Velocity","outlet");
+! $Mout   = massFlowAve("Mach Number","outlet");
+! $VThetaout  = areaAve("Velocity Circumferential","outlet");
+
+! $P0out  = massFlowAve("Total Pressure","outlet");
+! $T0out  = massFlowAve("Total Temperature","outlet");
+! $htout  = massFlowAve("Total Enthalpy","outlet");
+
+# ==============================
+# MASS FLOW
+# ==============================
+! $mdot = massFlow("outlet");
+
+# ==============================
+# FORCES
+# ==============================
+! $Fx = force("wall","X");
+! $Fy = force("wall","Y");
+! $Fz = force("wall","Z");
+
+# ==============================
+# TORQUES
+# ==============================
+! $Tx = torque("wall","X");
+! $Ty = torque("wall","Y");
+! $Tz = torque("wall","Z");
+
+# ==============================
+# WALL SHEAR STRESS
+# ==============================
+! $tau_w = areaAve("Wall Shear","wall");
+
+# ==============================
+# PRINT
+# ==============================
+!print FILE "$Pin,$Tin,$rhoin,$muin,$hin,$sin,$vin,$Min,$VThetain,$P0in,$T0in,$htin,$Pout,$Tout,$rhoout,$muout,$hout,$sout,$vout,$Mout,$VThetaout,$P0out,$T0out,$htout,$mdot,$Fx,$Fy,$Fz,$Tx,$Ty,$Tz,$tau_w\n";
+
+!close(FILE);

@@ -1,0 +1,16 @@
+/file/read-case-data /scratch/24cr60r06/dhairya/data_files/rotation_d2_5k_rpm_2nd_order.cas.h5
+
+/file/binary-legacy-files yes
+/file/cff-files no
+/file/data-file-options 
+; note: 2 enter spaces after this line is required for proper functioning of this code. It is a safety mechanism to bypass the "reset the already defined derived quantities [yes]" prompt otherwise the code may not write the full_data file.
+
+
+mach-number total-pressure total-temperature total-enthalpy total-energy enthalpy entropy density pressure sound-speed specific-heat-cp gas-constant compressibility-factor density-all dynamic-pressure pressure-coefficient absolute-pressure velocity-magnitude x-velocity y-velocity z-velocity axial-velocity radial-velocity tangential-velocity relative-x-velocity relative-y-velocity relative-z-velocity rel-velocity-magnitude relative-velocity-angle rel-total-pressure rel-total-temperature rothalpy dp-dx dp-dy dp-dz dx-velocity-dx dx-velocity-dy dx-velocity-dz dy-velocity-dx dy-velocity-dy dy-velocity-dz dz-velocity-dx dz-velocity-dy dz-velocity-dz strain-rate-mag vorticity-mag x-vorticity y-vorticity z-vorticity helicity q-criterion raw-q-criterion lambda2-criterion turb-kinetic-energy turb-diss-rate turb-intensity turb-reynolds-number-rey viscosity-turb viscosity-eff viscosity-lam viscosity-ratio thermal-conductivity-eff thermal-conductivity-lam prandtl-number-eff prandtl-number-lam wall-shear x-wall-shear y-wall-shear z-wall-shear wall-temperature wall-adjacent-temperature y-plus y-star skin-friction-coef heat-flux heat-transfer-coef heat-transfer-coef-wall heat-transfer-coef-wall-adj heat-transfer-coef-yplus stanton-number nusselt-number cell-reynolds-number cell-volume cell-volume-change cell-wall-distance mass-imbalance x-coordinate y-coordinate z-coordinate axial-coordinate radial-coordinate angular-coordinate abs-angular-coordinate
+quit
+
+
+/file/write-case-data /scratch/24cr60r06/dhairya/data_files/full_data/rotation_d2_5k_rpm_2nd_order_fulldata.dat
+
+/exit yes
+
