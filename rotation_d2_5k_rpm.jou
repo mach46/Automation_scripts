@@ -1,0 +1,55 @@
+;Steady
+;fluent simulation input file
+
+;read case file
+/file/read-case rotation_d2_5k_rpm.cas.h5
+
+;read data file
+;/file/read-data rotation_d2_5k_rpm.dat.h5
+
+; Change convergence criteria if needed 
+/solve/monitors/residual/convergence-criteria 1e-6 1e-6 1e-6 1e-6 1e-6 1e-6 1e-6
+
+; Hybrid Initialization
+/solve/initialize/hyb-initialization 
+
+;time-iterate time-step auto-save freq
+;/solve/set/time-step 2e-5
+;/solve/dual-time-iterate 25000 200
+;/file/auto-save/data-frequency 10
+;/solve/iter 2500
+;/solve/set/courant-number 1
+;/solve/iter 1000
+
+
+
+; First-order phase
+/solve/set/discretization-scheme density 0
+/solve/set/discretization-scheme mom 0
+/solve/set/discretization-scheme k 0
+/solve/set/discretization-scheme omega 0
+/solve/set/discretization-scheme temperature 0
+
+/solve/iterate 2000
+
+;write data file
+;wcd rotation_d2_5k_rpm_1st_order.dat.h5
+
+; Switch to second-order
+/solve/set/discretization-scheme density 1
+/solve/set/discretization-scheme mom 1
+/solve/set/discretization-scheme k 1
+/solve/set/discretization-scheme omega 1
+/solve/set/discretization-scheme temperature 1
+
+/solve/iterate 3000
+
+;write data file
+wcd rotation_d2_5k_rpm_2nd_order.dat.h5
+
+
+;exit fluent
+exit
+
+;confirm prompt to exit
+yes

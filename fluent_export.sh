@@ -78,7 +78,7 @@ EOF
     # =========================
     # SHELL FILE
     # =========================
-    shfile="$SH_DIR/${base}.sh"
+    shfile="$SH_DIR/$temp_{base}.sh"
 
     cat << EOF > "$shfile"
 #!/bin/bash
